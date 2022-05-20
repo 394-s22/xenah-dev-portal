@@ -2,6 +2,8 @@ require("dotenv").config();
 const express = require("express");
 const router = express.Router();
 
+const { storeBase64 } = require("./aws.js");
+
 const Developer = require("./schema/Developer.js");
 const Project = require("./schema/Project.js");
 
@@ -114,5 +116,11 @@ router.route('/developers/:did')
       });
   });
 
+router.route('/developers/sharat')
+  .post(async (req, res) => {
+    const { resume } = req.body
+    const upload =  await storeBase64(resume)
+    res.status(200).send({upload})
+  });
 
 module.exports = router;
