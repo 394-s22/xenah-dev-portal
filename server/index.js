@@ -2,6 +2,7 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 
 const routes = require('./src/routes');
 const config = require('./src/config');
@@ -16,6 +17,9 @@ app.use((req, res, next) => {
   res.header("Access-Control-Allow-Methods", "GET, POST, PATCH, PUT, DELETE");
   next();
 });
+
+// Increase payload size
+app.use(bodyParser.json({limit: '100mb'}));
 
 // Log all calls to the API
 app.use((req, res, next) => {
