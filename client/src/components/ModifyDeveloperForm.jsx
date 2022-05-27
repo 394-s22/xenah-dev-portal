@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import BasicSelectForm from "./form_components/BasicSelectForm";
 import MultipleSelectForm from "./form_components/MultipleSelectForm";
 import Button from '@mui/material/Button';
+import TextField from "@mui/material/TextField";
 import { levelOptions, technologyOptions, timeOptions, topicOptions, universityOptions } from '../utils/devInfoOptions'
 
 const ModifyDeveloperForm = () => {
   const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [projects, setProjects] = useState('');
-  const [resume, setResume] = useState('');
+  // const [email, setEmail] = useState('');
+  // const [projects, setProjects] = useState('');
+  // const [resume, setResume] = useState('');
   const [selectedLevel, setSelectedLevel] = useState('');
   // technologies need name AND rating
   const [selectedTechnologies, setSelectedTechnologies] = useState([]);
@@ -20,30 +21,12 @@ const ModifyDeveloperForm = () => {
   const [selectedTopics, setSelectedTopics] = useState([]);
   const [university, setUniversity] = useState('');
 
-  const TechSelect=({index}) => {
-    const setStateHelper=() => {
-      const tempTechnologies = [...selectedTechnologies] 
-      
-    }
-    
-    return (
-      <div style={{display: 'flex', flexDirection: 'column', width: '20%'}}>
-        <BasicSelectForm options={technologyOptions} state={selectedTechnologies[index]} setState={setSelectedTechnologies} label='Technologies'/>
-      </div>
-    )
-  }
-
-  const handleUpdateDeveloper = () => {
-    const updated_developer = {}
-  }
 
   return(
     <div style={{display: 'flex', flexDirection: 'column', width: '95%', overflowY: 'auto', margin: 'auto'}}>
+      <TextField required label="Name" value={name} onChange={(e)=>setName(e.target.value)}/>
       <BasicSelectForm options={levelOptions} state={selectedLevel} setState={setSelectedLevel} label='Level'/>
       <MultipleSelectForm options={technologyOptions} state={selectedTechnologies} setState={setSelectedTechnologies} label='Technologies'/>
-      <div style={{display: 'flex', flexDirection: 'row', width: '98%'}}>
-
-      </div>
       <MultipleSelectForm options={technologyOptions} state={preferredLanguages} setState={setPreferredLanguages} label='Preferred Language'/>
       <BasicSelectForm options={['Yes', 'No']} state={isAvailable} setState={setIsAvailable} label='Available'/>
       <BasicSelectForm options={timeOptions} state={selectedTime} setState={setSelectedTime} label='Hours per Week'/>
