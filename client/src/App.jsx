@@ -37,9 +37,6 @@ const ProtectedRedirect = ({ component }) => (
 
         <div style={{marginTop: '1em'}}>
           <Switch>
-            <Route path="/">
-              <ModifyDeveloperForm />
-            </Route>
             <Route path="/projects">
               {user ? <AdminProjectsView/> :  <Redirect to = "/login"/>}
             </Route>
