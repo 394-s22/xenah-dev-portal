@@ -6,6 +6,7 @@ import BrowseDevelopers from "./components/BrowseDevelopers";
 import Button from '@mui/material/Button';
 import { useUserState } from "./utils/firebase";
 import Login from "./components/Login";
+import ModifyDeveloperForm from "./components/ModifyDeveloperForm";
 
 const App = () => {
  
@@ -36,6 +37,9 @@ const ProtectedRedirect = ({ component }) => (
 
         <div style={{marginTop: '1em'}}>
           <Switch>
+            <Route path="/">
+              <ModifyDeveloperForm />
+            </Route>
             <Route path="/projects">
               {user ? <AdminProjectsView/> :  <Redirect to = "/login"/>}
             </Route>
