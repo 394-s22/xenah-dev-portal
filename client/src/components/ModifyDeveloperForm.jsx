@@ -21,6 +21,10 @@ const ModifyDeveloperForm = () => {
   const [university, setUniversity] = useState('');
 
   const TechSelect=({index}) => {
+    const setStateHelper=() => {
+      tempTechnologies = [...selectedTechnologies] 
+      technology = []
+    }
     return (
       <div style={{display: 'flex', flexDirection: 'column', width: '20%'}}>
         <BasicSelectForm options={technologyOptions} state={selectedTechnologies[index]} setState={setSelectedTechnologies} label='Technologies'/>
