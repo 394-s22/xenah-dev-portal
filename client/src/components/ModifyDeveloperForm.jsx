@@ -11,7 +11,7 @@ const ModifyDeveloperForm = () => {
   const [resume, setResume] = useState('');
   const [selectedLevel, setSelectedLevel] = useState('');
   // technologies need name AND rating
-  const [selectedTechnologies, setSelectedTechnologies] = useState(new Array(5).fill(null));
+  const [selectedTechnologies, setSelectedTechnologies] = useState([]);
   const [preferredLanguages, setPreferredLanguages] = useState([]);
   // translate into boolean
   const [isAvailable, setIsAvailable] = useState('');
@@ -22,9 +22,10 @@ const ModifyDeveloperForm = () => {
 
   const TechSelect=({index}) => {
     const setStateHelper=() => {
-      tempTechnologies = [...selectedTechnologies] 
-      technology = []
+      const tempTechnologies = [...selectedTechnologies] 
+      
     }
+    
     return (
       <div style={{display: 'flex', flexDirection: 'column', width: '20%'}}>
         <BasicSelectForm options={technologyOptions} state={selectedTechnologies[index]} setState={setSelectedTechnologies} label='Technologies'/>
