@@ -11,7 +11,7 @@ const ModifyDeveloperForm = () => {
   const [resume, setResume] = useState('');
   const [selectedLevel, setSelectedLevel] = useState('');
   // technologies need name AND rating
-  const [selectedTechnologies, setSelectedTechnologies] = useState([]);
+  const [selectedTechnologies, setSelectedTechnologies] = useState(new Array(5).fill(null));
   const [preferredLanguages, setPreferredLanguages] = useState([]);
   // translate into boolean
   const [isAvailable, setIsAvailable] = useState('');
@@ -19,6 +19,14 @@ const ModifyDeveloperForm = () => {
   // topics needs name AND rating
   const [selectedTopics, setSelectedTopics] = useState([]);
   const [university, setUniversity] = useState('');
+
+  const TechSelect=({index}) => {
+    return (
+      <div style={{display: 'flex', flexDirection: 'column', width: '20%'}}>
+        <BasicSelectForm options={technologyOptions} state={selectedTechnologies[index]} setState={setSelectedTechnologies} label='Technologies'/>
+      </div>
+    )
+  }
 
   const handleUpdateDeveloper = () => {
     const updated_developer = {}
@@ -28,6 +36,9 @@ const ModifyDeveloperForm = () => {
     <div style={{display: 'flex', flexDirection: 'column', width: '95%', overflowY: 'auto', margin: 'auto'}}>
       <BasicSelectForm options={levelOptions} state={selectedLevel} setState={setSelectedLevel} label='Level'/>
       <MultipleSelectForm options={technologyOptions} state={selectedTechnologies} setState={setSelectedTechnologies} label='Technologies'/>
+      <div style={{display: 'flex', flexDirection: 'row', width: '98%'}}>
+
+      </div>
       <MultipleSelectForm options={technologyOptions} state={preferredLanguages} setState={setPreferredLanguages} label='Preferred Language'/>
       <BasicSelectForm options={['Yes', 'No']} state={isAvailable} setState={setIsAvailable} label='Available'/>
       <BasicSelectForm options={timeOptions} state={selectedTime} setState={setSelectedTime} label='Hours per Week'/>
